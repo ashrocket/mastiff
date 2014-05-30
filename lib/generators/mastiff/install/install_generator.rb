@@ -5,7 +5,7 @@
 #require 'rails/generators'
 module Mastiff
   #class UploaderGenerator < Rails::Generators::NamedBase
-    
+
   class InstallGenerator < Rails::Generators::NamedBase
 
 
