@@ -1,0 +1,31 @@
+DEFAULTS: &DEFAULTS
+  server: imap.gmail.com
+  server: imap.1und1.de
+  server: mail.raiteri.net
+  port: 993
+  email: fetch.airblackbox@gmail.com
+  email: fetch@airblackbox.com
+  email: fetch@raiteri.net
+  password: OAGmail123
+  oag_address: OAGAnalyser@oag.com
+  source_address:
+   - OAGAnalyser@oag.com
+   - ashley@raiteri.net
+  valid_subject_words:
+   - OAG Analyser Scheduled Report
+   - Power tables export - CSV format
+  scheduled_subject_line: OAG Analyser Scheduled Report
+  scheduled_hub_subject_line: OAG Analyser Scheduled Report - HUB
+  scheduled_cxx_subject_line: OAG Analyser Scheduled Report - CXX
+  manual_subject_line: Power tables export - CSV format
+development:
+  server: mail.raiteri.net
+  <<: *DEFAULTS
+
+test:
+  server: imap.1und1.de
+  <<: *DEFAULTS
+
+production:
+  server: imap.1und1.de
+  <<: *DEFAULTS
