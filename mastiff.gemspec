@@ -23,8 +23,8 @@ Gem::Specification.new do |s|
     s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
     s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
 
-    s.require_path  = "lib"
-    
+    s.require_paths = ["lib"]
+
     s.add_dependency "rails", "~> 4.0"
     s.add_dependency 'coffee-rails', '~> 4.0'
     s.add_dependency 'jquery-rails', '~> 3.1'
