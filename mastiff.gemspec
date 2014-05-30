@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 eos
 
 
-  #s.files         = `git ls-files`.split("\n") + ['lib/generators/air_oag/install_generator.rb']
+  s.files         = `git ls-files`.split("\n") + ['lib/generators/air_oag/install_generator.rb']
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
 
@@ -37,6 +37,6 @@ eos
 
 
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  #s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
 end
