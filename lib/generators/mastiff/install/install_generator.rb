@@ -4,7 +4,9 @@
 #
 #require 'rails/generators'
 module Mastiff
-    class InstallGenerator < Rails::Generators::Base
+  #class UploaderGenerator < Rails::Generators::NamedBase
+    
+  class InstallGenerator < Rails::Generators::NamedBase
 
 
       desc "Creates a Mastiff initializer and copies default workers and uploader files to your application."
