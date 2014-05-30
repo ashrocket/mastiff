@@ -2,17 +2,17 @@
 # When a generator is invoked, each public method in the generator is executed sequentially in the order that it is defined.
 # http://guides.rubyonrails.org/generators.html
 #
-require 'rails/generators'
-
+#require 'rails/generators'
 module Mastiff
-  module Generators
     class InstallGenerator < Rails::Generators::Base
+
 
       desc "Creates a Mastiff initializer and copies default workers and uploader files to your application."
       #class_option :orm
-      def self.source_root
-           @source_root ||= File.join(File.dirname(__FILE__), 'templates')
-      end
+      #def self.source_root
+      #     @source_root ||= File.join(File.dirname(__FILE__), 'templates')
+      #end
+      source_root File.expand_path("../templates", __FILE__)
 
       def create_routes
         route "mount Mastiff::Engine => '/mail'"
@@ -55,5 +55,4 @@ module Mastiff
       #  readme "README" if behavior == :invoke
       #end
     end
-  end
 end
