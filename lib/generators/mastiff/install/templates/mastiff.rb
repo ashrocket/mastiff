@@ -1,8 +1,8 @@
 require 'redis'
 
-AirOag.configure do |config|
+Mastiff.configure do |config|
 
-  AirOag::Email.configure do |email_config|
+  Mastiff::Email.configure do |email_config|
 
     # IMAP server account settings
     email_config.settings =  {  address:        ENV["MAILDO_MAILHOST"],
@@ -16,13 +16,13 @@ AirOag.configure do |config|
   end
 
   # Redis Objects Option configuration
-  AirOag::Email::Message.redis = Redis.new(config.redis_options)
+  Mastiff::Email::Message.redis = Redis.new(config.redis_options)
 
   # https://gist.github.com/jnunemaker/230531
   # Allows accessing config variables from oag_mail_config.yml like so:
-  #   OAGConfig[:server] => imap.gmail.com
-  if File.exists? File.join(Rails.root, 'config', 'air_oag.yml')
-    raw_config = File.read(File.join(Rails.root, 'config', 'air_oag.yml'))
+  #   MastiffConfig[:server] => imap.gmail.com
+  if File.exists? File.join(Rails.root, 'config', 'mastiff.yml')
+    raw_config = File.read(File.join(Rails.root, 'config', 'mastiff.yml'))
     config.message_settings = YAML.load(raw_config)[Rails.env].symbolize_keys
   end
 
