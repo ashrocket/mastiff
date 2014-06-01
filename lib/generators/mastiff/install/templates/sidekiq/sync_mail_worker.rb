@@ -1,3 +1,5 @@
+require 'sidekiq-lock'
+
 class SyncMailWorker
   include Sidekiq::Worker
   include Sidekiq::Lock::Worker
