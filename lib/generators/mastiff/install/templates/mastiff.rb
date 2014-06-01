@@ -19,7 +19,7 @@ Mastiff.configure do |config|
   Mastiff::Email::Message.redis = Redis.new(config.redis_options)
 
   # https://gist.github.com/jnunemaker/230531
-  # Allows accessing config variables from oag_mail_config.yml like so:
+  # Allows accessing config variables from mastiff.yml like so:
   #   MastiffConfig[:server] => imap.gmail.com
   if File.exists? File.join(Rails.root, 'config', 'mastiff.yml')
     raw_config = File.read(File.join(Rails.root, 'config', 'mastiff.yml'))
@@ -30,7 +30,7 @@ Mastiff.configure do |config|
   # so we need to initialize based on the class, not an instance
 
   # Worker to decode and store attachments
-  config.message_attachment_worker  = SyncAttachmentWorker
+  config.sync_attachment_worker  = SyncAttachmentWorker
 
   # Worker to process attachments and perform an action
   config.process_attachment_worker  = ProcessAttachmentWorker

@@ -1,5 +1,6 @@
 # encoding: utf-8
 require 'spec_helper'
+require 'support/mock_imap'
 require 'mail'
 
 describe Mastiff::Email do

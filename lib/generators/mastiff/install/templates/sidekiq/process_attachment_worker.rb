@@ -6,6 +6,6 @@ class ProcessAttachmentWorker
     msg = Mastiff::Email::Message.get(message_id)
 
     #Do Something here with the message
-    #MessageFileWorker.perform_async(message_id)
+    #
   end
 end

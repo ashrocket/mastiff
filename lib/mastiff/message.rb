@@ -1,6 +1,6 @@
 require 'redis-objects'
 
-module AirOag
+module Mastiff
   module Email
     class Message
       attr_accessor :attachment_name, :stored_filename, :attachment_size, :uid, :validity_id, :header, :mail_message, :mailbox, :busy, :uploader
@@ -69,7 +69,7 @@ module AirOag
                   self.class.pending_attachments.delete(id)
                   unlock
                   save
-                  AirOag.process_attachment_worker.perform_async(id)
+                  Mastiff.process_attachment_worker.perform_async(id)
 
         end
       end
@@ -89,7 +89,7 @@ module AirOag
           @attachment_name  = attachment.filename
           @attachment_size  = 0
           @stored_filename = @attachment_name.squish.gsub(" ", "_")
-          @uploader  = AirOag.attachment_uploader.new
+          @uploader  = Mastiff.attachment_uploader.new
 
           self.class.pending_attachments << id
           @attachment_analyzed = false
@@ -125,7 +125,7 @@ module AirOag
         end
 
         self.class.emails[id] = self
-        AirOag.message_attachment_worker.perform_async(id) if @has_attachments and not @attachment_analyzed
+        Mastiff.sync_attachment_worker.perform_async(id) if @has_attachments and not @attachment_analyzed
 
       end
 

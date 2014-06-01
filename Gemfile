@@ -25,5 +25,5 @@ group :development do
  gem 'shoulda',             '~> 3.5'
  gem 'vcr',                 '~> 2.9'
  gem 'awesome_print',       '~> 1.2'
-
+ gem 'byebug'
 end

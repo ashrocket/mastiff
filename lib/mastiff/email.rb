@@ -4,7 +4,7 @@ module Mastiff
   module Email
 
   #
-  # You can configure AirOag::Email with a configure block in an initializer.
+  # You can configure Mastiff::Email with a configure block in an initializer.
   #
   # For example, the following configure the email server info and basic rules settings.
   # using the Figaro gem to grab sensitive values from ENV.
@@ -18,7 +18,7 @@ module Mastiff
 
   #
   # RAILS.root/config/initializers/mastiff.rb
-  #  AirOag::Email.configure do |config|
+  #  Mastiff::Email.configure do |config|
   #   config.settings =  { address:        ENV["MAILDO_MAILHOST"],
   #                        port:           ENV["MAILDO_PORT"],
   #                        user_name:      ENV["MAILDO_EMAIL_ADDRESS"],
@@ -119,7 +119,7 @@ module Mastiff
           msg = Message.get(id)
           msg.header[:busy] = true
           msg.save
-          AirOag.process_attachment_worker.perform_async(id)
+          Mastiff.process_attachment_worker.perform_async(id)
           msg.header[:busy] = false
           msg.save
 
@@ -161,7 +161,7 @@ module Mastiff
 
     def flush(current_uid_validity = :all)
       current_uid_validity = :all if current_uid_validity.nil?
-      AirOag.attachment_uploader.flush
+      Mastiff.attachment_uploader.flush
       stale_msgs_ids = Message.emails.keys.select {|k| /#{current_uid_validity}:/ !~ k}
       stale_msgs_ids.each {|id| Message.emails.delete id}
       stale_msgs_ids.each {|id| Message.raw.delete id}
@@ -182,7 +182,7 @@ module Mastiff
         ids.each do |id|
           message = Message.get(id)
           if message.respond_to?('attachment_name') and not message.attachment_name.blank?
-            AirOag::attachment_uploader.delete(message.attachment_name)
+            Mastiff::attachment_uploader.delete(message.attachment_name)
           end
           Message.emails.delete id
           Message.raw.delete id

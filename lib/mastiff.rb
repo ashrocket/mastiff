@@ -22,8 +22,8 @@ module Mastiff
   @@process_attachment_worker = NullWorker.new
 
   #The default worker removes attachments and stores them in local file store
-  mattr_accessor :message_attachment_worker
-  @@message_attachment_worker = NullWorker
+  mattr_accessor :sync_attachment_worker
+  @@sync_attachment_worker = NullWorker
 
   mattr_accessor :attachment_uploader
   @@attachment_uploader = NullUploader

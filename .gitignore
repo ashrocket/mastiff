@@ -44,3 +44,14 @@ public
 .rspec
 .rails-version
 .rbenv-version
+spec/dummy/bin/*
+spec/dummy/app/uploaders
+spec/dummy/app/workers
+spec/dummy/data
+spec/dummy/config/initializers/mastiff.rb
+spec/dummy/config/sidekiq.yml
+spec/dummy/db/development.sqlite3
+spec/dummy/db/test.sqlite3
+spec/dummy/log/development.log
+spec/dummy/log/test.log
+spec/dummy/tmp/
