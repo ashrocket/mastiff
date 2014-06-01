@@ -10,15 +10,16 @@ module Mastiff
 
 
       desc "Creates a Mastiff initializer and copies default workers and uploader files to your application."
+
+      hook_for :prefix, aliases: "-p"
       #class_option :orm
       #def self.source_root
       #     @source_root ||= File.join(File.dirname(__FILE__), 'templates')
       #end
       source_root File.expand_path("../templates", __FILE__)
 
-      def create_routes
-        route "mount Mastiff::Engine => '/mail'"
-      end
+      class_option :routes, desc: "Generate routes", type: :boolean, default: true
+
 
       def copy_initializer
         template "mastiff.rb", "config/initializers/mastiff.rb"
@@ -56,6 +57,11 @@ module Mastiff
       def create_data_directory
          empty_directory "data/attachments/pending"
          empty_directory "data/attachments/processed"
+      end
+
+      def create_routes
+
+        route "mount Mastiff::Engine => '/mail'"
       end
       #def show_readme
       #  readme "README" if behavior == :invoke
