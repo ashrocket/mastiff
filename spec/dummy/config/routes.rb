@@ -54,4 +54,10 @@ Dummy::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  require 'sidekiq/web'
+  require 'sidetiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+  get "home/index"
+  root 'home#index'
 end
