@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+// jquery should be required before this file is required
+
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.api.fnReloadAjax
 //= require dataTables/extras/TableTools
