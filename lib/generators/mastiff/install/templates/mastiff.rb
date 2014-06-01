@@ -5,10 +5,10 @@ Mastiff.configure do |config|
   Mastiff::Email.configure do |email_config|
 
     # IMAP server account settings
-    email_config.settings =  {  address:        ENV["MAILDO_MAILHOST"],
-                                port:           ENV["MAILDO_PORT"],
-                                user_name:      ENV["MAILDO_EMAIL_ADDRESS"],
-                                password:       ENV["MAILDO_PASSWORD"],
+    email_config.settings =  {  address:        ENV["MASTIFF_MAILHOST"],
+                                port:           ENV["MASTIFF_PORT"],
+                                user_name:      ENV["MASTIFF_EMAIL_ADDRESS"],
+                                password:       ENV["MASTIFF_PASSWORD"],
                                 authentication: nil,
                                 enable_ssl:     true }
 

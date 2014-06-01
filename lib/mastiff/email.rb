@@ -11,18 +11,18 @@ module Mastiff
   # place these values in ~/.bashrc or equivalent shell init file
   #
   #
-  #  export MAILDO_MAILHOST='mail.somehost.com'
-  #  export MAILDO_PORT=993
-  #  export MAILDO_EMAIL_ADDRESS='accountname@somehost.com'
-  #  export MAILDO_PASSWORD='changeme'
+  #  export MASTIFF_MAILHOST='mail.somehost.com'
+  #  export MASTIFF_PORT=993
+  #  export MASTIFF_EMAIL_ADDRESS='accountname@somehost.com'
+  #  export MASTIFF_PASSWORD='changeme'
 
   #
   # RAILS.root/config/initializers/mastiff.rb
   #  Mastiff::Email.configure do |config|
-  #   config.settings =  { address:        ENV["MAILDO_MAILHOST"],
-  #                        port:           ENV["MAILDO_PORT"],
-  #                        user_name:      ENV["MAILDO_EMAIL_ADDRESS"],
-  #                        password:       ENV["MAILDO_PASSWORD"],
+  #   config.settings =  { address:        ENV["MASTIFF_MAILHOST"],
+  #                        port:           ENV["MASTIFF_PORT"],
+  #                        user_name:      ENV["MASTIFF_EMAIL_ADDRESS"],
+  #                        password:       ENV["MASTIFF_PASSWORD"],
   #                        authentication: nil,
   #                        enable_ssl:     true }
   #  end
