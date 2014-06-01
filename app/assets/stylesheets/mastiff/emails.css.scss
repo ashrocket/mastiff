@@ -1,0 +1,25 @@
+.inbox-email {
+ ul li {
+     float: left;
+     list-style-image: none;
+     list-style-position: outside;
+     list-style-type: none;
+ }
+
+
+ #email_table.table tbody tr.busy td,  #email_table tr.active.busy td{
+   background-color: #a7a7a7;
+   opacity: .50;
+   color: black;
+   font-style: italic;
+  cursor: not-allowed;
+ }
+ #email_table.table tbody tr.busy:hover td, #email_table tr.active.busy:hover td{
+    background-color: #393939 !important;
+    opacity: .50;
+    color: #a7a7a7;
+    font-style: italic;
+   cursor: not-allowed;
+ }
+
+}

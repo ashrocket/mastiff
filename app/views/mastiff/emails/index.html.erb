@@ -1,0 +1,54 @@
+<div class="container inbox-email">
+  <br/>
+  <br/>
+    <div class="row navbar admin-nav">
+        <ul class="nav navbar-nav">
+          <li><br/></li>
+          <li>
+            <a href="<%= emails_url %>" >
+              <i class="fa fa-gear"></i>
+            </a>
+          </li>
+          <li class="nav-label">
+            <a href="#">
+              Inbox Summary
+            </a>
+          </li>
+          <li>
+            <a href="<%= emails_url %>" role="button">Admin Config</a>
+          </li>
+          <li>
+            <a href="<%= emails_url %>" role="button">Attachment Files</a>
+          </li>
+        </ul>
+    </div>
+    <div class="row">
+     <div class="alert alert-danger alert-dismissable hide">
+       <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times</button>
+       <div id="alert-text"></div>
+     </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-xs-4">
+            <button class="btn btn-default" id="process_inbox" data-url="<%= process_inbox_emails_url%>">Process Inbox</button>
+            <button class="btn btn-default" id="reload_mail" data-url="<%=    reload_emails_url%>">Reload</button>
+            <button class="btn btn-default" id="reset_mail" data-url="<%=    reset_emails_url%>">Reset</button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row"></div>
+
+
+    <table class="table table-hover table-condensed" id="email_table"
+           data-url-uid="<%= emails_url %>"
+           data-url-headers="<%= list_emails_url %>"
+           data-url-delete="<%= remove_emails_url %>"
+           data-url-archive="<%= archive_emails_url %>"
+           data-url-process="<%= handle_mail_emails_url %>"
+           data-url-validity="<%= emails_url %>">
+    <tbody>
+    </tbody>
+    </table>
+</div>
