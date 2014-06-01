@@ -37,9 +37,9 @@ Gem::Specification.new do |s|
     s.add_dependency 'aws-s3', '~> 0.6'
     s.add_dependency 'redis-objects', '~> 0.9'
 
-  s.add_dependency 'sidekiq'  '~> 2.17.7'
-  s.add_dependency 'sidetiq'  '~> 0.5.0'
-  s.add_dependency 'sidekiq-lock'
+  s.add_dependency 'sidekiq',  '~> 2.17'
+  s.add_dependency 'sidetiq',  '~> 0.5'
+  s.add_dependency 'sidekiq-lock',  '~> 0.2'
 
 
 

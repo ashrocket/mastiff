@@ -2,9 +2,9 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "sidekiq", '~> 2.17.7'
-gem 'sidetiq', '~> 0.5.0'
-gem 'sidekiq-lock'
+#gem "sidekiq", '~> 2.17.7'
+#gem 'sidetiq', '~> 0.5.0'
+#gem 'sidekiq-lock'
 gem  'sinatra', '>= 1.3.0', require: false
 
 
