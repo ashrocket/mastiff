@@ -1,8 +1,8 @@
 # desc "Explaining what the task does"
-# task :air_oag do
+# task :mastiff do
 #   # Task goes here
 # end
-namespace :air_oag do
+namespace :mastiff do
 
   desc "Clears cached inbox and removes local attachment storage artifacts"
   task :reset => :environment do
