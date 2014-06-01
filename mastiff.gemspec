@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     s.add_dependency 'bootstrap-sass', '~> 3.1'
     s.add_dependency 'jquery-datatables-rails', '~> 1.12'
 
+
     s.add_dependency 'mail', '~> 2.5'
     s.add_dependency 'carrierwave', '~> 0.10'
     s.add_dependency 'aws-s3', '~> 0.6'

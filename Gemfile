@@ -9,11 +9,7 @@ gem  'sinatra', '>= 1.3.0', require: false
 
 
 
-gem 'jquery-rails'
-gem 'sass-rails', '~> 4.0.2'
-gem 'bootstrap-sass'
-gem 'jquery-datatables-rails'
-
+g
 
 # your gem to rubygems.org.
 group :development do
