@@ -14,9 +14,9 @@ namespace :mastiff do
   end
 
   desc "Uninstalls Gem Generated files"
-  task :uninstall => :environment do
+  task :uninstall  do
     install_files = [
-      "config/initializers/air_oag.rb",
+      "config/initializers/mastiff.rb",
       "config/sidekiq.yml",
       "app/workers/sync_mail_worker.rb",
       "app/workers/sync_attachment_worker.rb",

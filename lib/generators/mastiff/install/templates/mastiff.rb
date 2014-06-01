@@ -31,13 +31,13 @@ Mastiff.configure do |config|
 
   # Worker to decode and store attachments
   config.sync_attachment_worker  = SyncAttachmentWorker
-
   # Worker to process attachments and perform an action
   config.process_attachment_worker  = ProcessAttachmentWorker
-
   # Class to store attachment
   config.attachment_uploader        =  MailAttachmentUploader
 
+  #config.pending_dir      = "data/attachments/pending"
+  #config.process_dir      = "data/attachments/processed"
 
   ul = config.attachment_uploader.new
   File.directory?(ul.store_dir) or

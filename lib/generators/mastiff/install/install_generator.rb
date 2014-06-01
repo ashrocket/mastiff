@@ -53,6 +53,10 @@ module Mastiff
         end
       end
 
+      def create_data_directory
+         empty_directory "data/attachments/pending"
+         empty_directory "data/attachments/processed"
+      end
       #def show_readme
       #  readme "README" if behavior == :invoke
       #end
