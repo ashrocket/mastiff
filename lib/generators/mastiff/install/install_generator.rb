@@ -59,10 +59,6 @@ module Mastiff
          empty_directory "data/attachments/processed"
       end
 
-      def create_routes
-
-        route "mount Mastiff::Engine => '/mail'"
-      end
       #def show_readme
       #  readme "README" if behavior == :invoke
       #end

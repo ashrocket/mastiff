@@ -18,6 +18,10 @@ namespace :mastiff do
     install_files = [
       "config/initializers/mastiff.rb",
       "config/sidekiq.yml",
+      "app/controllers/emails_controller.rb",
+      "app/views/emails/index.html.erb",
+      "app/assets/javascripts/emails.js.coffee",
+      "app/assets/stylesheets/emails.css.scss",
       "app/workers/sync_mail_worker.rb",
       "app/workers/sync_attachment_worker.rb",
       "app/workers/process_attachment_worker.rb",

@@ -1,5 +1,22 @@
 Dummy::Application.routes.draw do
-  mount Mastiff::Engine => '/mail'
+  
+
+  resource :mail, :controller => 'emails', only: [:index] do
+           get '/', action: :index
+           get 'msg_ids',  format: 'json'
+           get 'validity',  format: 'json'
+           get 'list', format: 'json'
+
+           # These should be POSTs with no data, but get is easier to use
+           get 'reload', format: 'json'
+           get 'reset', format: 'json'
+           get 'process_inbox', format: 'json'
+
+           # These are posts with data
+           post 'remove', format: 'json'
+           post 'archive', format: 'json'
+           post 'handle_mail', format: 'json'
+      end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,7 +70,6 @@ Dummy::Application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end
 
   require 'sidekiq/web'
   require 'sidetiq/web'

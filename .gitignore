@@ -45,6 +45,7 @@ public
 .rails-version
 .rbenv-version
 spec/dummy/bin/*
+spec/dummy/app
 spec/dummy/app/uploaders
 spec/dummy/app/workers
 spec/dummy/data

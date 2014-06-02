@@ -9,8 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require mastiff
- *= require_tree .
- */
-@import "bootstrap";
+ *= require bootstrap
+ *= require dataTables/jquery.dataTables.bootstrap3
+ *= require emails
+ 
+ *= require 'emails'
+
+*/
+
 

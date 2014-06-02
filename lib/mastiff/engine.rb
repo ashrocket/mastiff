@@ -1,7 +1,7 @@
 module Mastiff
   class Engine < ::Rails::Engine
 
-    isolate_namespace Mastiff
+    #isolate_namespace Mastiff
 
     config.generators do |g|
          g.test_framework    :rspec,        :fixture => false

@@ -2,14 +2,17 @@ source "https://rubygems.org"
 
 gemspec
 
-#gem "sidekiq", '~> 2.17.7'
-#gem 'sidetiq', '~> 0.5.0'
-#gem 'sidekiq-lock'
+gem "sidekiq", '~> 2.17.7'
+gem 'sidetiq', '~> 0.5.0'
+gem 'sidekiq-lock'
 gem  'sinatra', '>= 1.3.0', require: false
 
 
+gem 'jquery-rails'
+gem 'coffee-rails'
+gem 'bootstrap-sass'
+gem 'jquery-datatables-rails', '~> 1.12'
 
-g
 
 # your gem to rubygems.org.
 group :development do

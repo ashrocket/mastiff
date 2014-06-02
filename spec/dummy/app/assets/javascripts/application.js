@@ -10,6 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require mastiff
+//= require jquery
+//= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.api.fnReloadAjax
+//= require dataTables/extras/TableTools
+//= require dataTables/jquery.dataTables.bootstrap3
+//= require emails
+
 //= require_tree .
 

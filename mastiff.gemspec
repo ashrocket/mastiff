@@ -26,12 +26,6 @@ Gem::Specification.new do |s|
     s.require_paths = ["lib"]
 
     s.add_dependency "rails", "~> 4.0"
-    s.add_dependency 'coffee-rails', '~> 4.0'
-    s.add_dependency 'jquery-rails', '~> 3.1'
-    s.add_dependency 'sass-rails', '~> 4.0'
-    s.add_dependency 'bootstrap-sass', '~> 3.1'
-    s.add_dependency 'jquery-datatables-rails', '~> 1.12'
-
 
     s.add_dependency 'mail', '~> 2.5'
     s.add_dependency 'carrierwave', '~> 0.10'

@@ -1,4 +1,4 @@
-class Mastiff::EmailsController < ApplicationController
+class EmailsController < ApplicationController
   before_action :set_admin_mastiff_email, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/mastiff_emails
