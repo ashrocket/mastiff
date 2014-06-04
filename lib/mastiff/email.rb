@@ -117,12 +117,16 @@ module Mastiff
       unless ids.blank?
         ids.each do |id|
           msg = Message.get(id)
-          msg.header[:busy] = true
-          msg.save
-          Mastiff.process_attachment_worker.perform_async(id)
-          msg.header[:busy] = false
-          msg.save
-
+          puts "msg #{id} busy state: #{msg.header[:busy]}"
+          unless msg.busy?
+            msg.lock_and_save
+            begin
+              Mastiff.process_attachment_worker.perform_async(id)
+              ensure
+                msg.unlock_and_save
+            end
+            msg.unlock_and_save
+          end
         end
         uids    = ids.map{|v| (v.split ':').last.to_i}
         original_vid = ids.first.split(':').first.to_i

@@ -28,6 +28,9 @@ module Mastiff
       def self.get(id)
         self.emails[id]
       end
+      def busy?
+        self.header[:busy]
+      end
       def lock_and_save
         lock and save
       end
