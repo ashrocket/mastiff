@@ -161,7 +161,30 @@ module Mastiff
       end
       return []
     end
+    def finalize(ids = [])
+      unless ids.blank?
+        uids         = ids.map{|v| (v.split ':').last.to_i}
+        original_vid = ids.first.split(':').first.to_i
 
+
+        Mail.connection do |imap|
+          delim = imap.list("","INBOX").first.delim
+          path = ["INBOX","processed"].join(delim)
+          imap.select('INBOX')
+           if not imap.list('', "INBOX#{delim}processed")
+             imap.create("INBOX#{delim}processed")
+           end
+           uids.each do |uid|
+             imap.uid_copy(uid, "INBOX#{delim}processed")
+             imap.uid_store(uid, "+FLAGS", [:Deleted])
+           end
+           imap.expunge
+        end
+        sync_deleted(ids)
+        return ids
+      end
+      return []
+    end
 
     def flush(current_uid_validity = :all)
       current_uid_validity = :all if current_uid_validity.nil?

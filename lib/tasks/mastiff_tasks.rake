@@ -8,9 +8,13 @@ namespace :mastiff do
   task :reset => :environment do
     Mastiff.attachment_uploader.flush
     Mastiff::Email::Message.processing.clear
+    Mastiff::Email::Message.pending_attachments.clear
     Mastiff::Email::Message.emails.clear
     Mastiff::Email::Message.raw.clear
     Mastiff::Email::Message.uid_validity.delete
+    Sidekiq::RetrySet.new.clear
+    #message::pending_attachments
+
   end
 
   desc "Uninstalls Gem Generated files"
