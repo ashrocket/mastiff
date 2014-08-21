@@ -57,3 +57,4 @@ spec/dummy/log/development.log
 spec/dummy/log/test.log
 spec/dummy/tmp/
 spec/dummy/app/views/*
+spec/dummy/app/views/emails
