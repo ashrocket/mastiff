@@ -2,3 +2,5 @@
 :queues:
   - default
   - email_queue
+  - report_queue
+:logfile: log/sidekiq.log
