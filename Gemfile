@@ -15,7 +15,7 @@ gem 'jquery-datatables-rails', '~> 1.12'
 
 
 # your gem to rubygems.org.
-group :development do
+group :test do
  gem 'sqlite3',             '~> 1.0'
  gem 'rspec-expectations',  '~> 2.14'
  gem 'rspec-rails',         '~> 2.14'
@@ -23,6 +23,8 @@ group :development do
  gem 'factory_girl_rails',  '~> 4.4'
  gem 'shoulda',             '~> 3.5'
  gem 'vcr',                 '~> 2.9'
+end
+group :development do
  gem 'awesome_print',       '~> 1.2'
  gem 'byebug'
 end

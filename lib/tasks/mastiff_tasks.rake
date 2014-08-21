@@ -2,6 +2,8 @@
 # task :mastiff do
 #   # Task goes here
 # end
+require "highline/import"
+
 namespace :mastiff do
 
   desc "Clears cached inbox and removes local attachment storage artifacts"
@@ -34,5 +36,16 @@ namespace :mastiff do
     install_files.each do |fpath|
       File.delete(fpath) if File.exist?(fpath)
     end
+  end
+
+  desc "Create paths for attachment storage"
+  task :init_paths  => :environment do
+      ul = Mastiff.attachment_uploader.new
+      answer = ask("Attachment Path (Enter for Default) ") { |q|
+        q.default   = "#{ul.store_dir}"
+        #q.validate  = /^(left|right)$/i
+      }
+      mkpath(answer, verbose: true)
+
   end
 end
