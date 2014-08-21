@@ -56,3 +56,4 @@ spec/dummy/db/test.sqlite3
 spec/dummy/log/development.log
 spec/dummy/log/test.log
 spec/dummy/tmp/
+spec/dummy/app/views/*

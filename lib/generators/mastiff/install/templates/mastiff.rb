@@ -36,7 +36,7 @@ Mastiff.configure do |config|
   # Class to store attachment
   config.attachment_uploader        =  MailAttachmentUploader
 
-  config.pending_dir      = "data/attachments/pending"
+  config.attachment_dir      = "data/attachments/pending"
   #config.process_dir      = "data/attachments/processed"
 
   ul = config.attachment_uploader.new
