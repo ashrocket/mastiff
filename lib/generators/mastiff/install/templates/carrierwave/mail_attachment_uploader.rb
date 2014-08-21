@@ -38,7 +38,7 @@ require 'carrierwave/processing/mime_types'
       # Override the directory where uploaded files will be stored.
       # This is a sensible default for uploaders that are meant to be mounted:
       def store_dir
-        File.join Rails.root, 'data', 'attachments', 'pending'
+        Mastiff.pending_dir
       end
 
       def store_mime(fname, mime_blob)

@@ -28,6 +28,9 @@ module Mastiff
   mattr_accessor :attachment_uploader
   @@attachment_uploader = NullUploader
 
+  mattr_accessor :attachment_dir
+  @@attachment_dir = '/tmp'
+
   # Yield self on setup for nice config blocks
   def self.configure(&block)
     yield self
