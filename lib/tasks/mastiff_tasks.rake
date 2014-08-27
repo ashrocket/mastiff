@@ -39,8 +39,8 @@ namespace :mastiff do
   end
 
   desc "Create paths for attachment storage"
-  task :init_paths, [:attachment_path]   do
-      p = attachment_path
+  task :init_paths, [:attachment_path]   do  |t, args|
+      p = args[:attachment_path]
       answer = ask("Attachment Path (Enter for Default) ") { |q|
         q.default   = "#{p}"
         #q.validate  = /^(left|right)$/i
