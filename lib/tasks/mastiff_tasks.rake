@@ -39,10 +39,10 @@ namespace :mastiff do
   end
 
   desc "Create paths for attachment storage"
-  task :init_paths  => :environment do
-      ul = Mastiff.attachment_uploader.new
+  task :init_paths, [:attachment_path]   do
+      p = attachment_path
       answer = ask("Attachment Path (Enter for Default) ") { |q|
-        q.default   = "#{ul.store_dir}"
+        q.default   = "#{p}"
         #q.validate  = /^(left|right)$/i
       }
       mkpath(answer, verbose: true)

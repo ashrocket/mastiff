@@ -18,5 +18,5 @@ class SyncMailWorker
         end
       end
   end
-  
+
 end
