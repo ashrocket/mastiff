@@ -42,6 +42,6 @@ Mastiff.configure do |config|
   ul = config.attachment_uploader.new
   File.directory?(ul.store_dir) or
   abort "Gem requires local storage path for mail attachments - #{ul.store_dir} does not exist!\n" +
-      "execute 'rake mastiff:init_paths [#{ul.store_dir}]' to generate path."
+      "execute 'rake mastiff:init_paths !! [#{ul.store_dir}]' to generate path."
 end
 
