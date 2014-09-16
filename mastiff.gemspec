@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
 
     s.add_dependency "rails", "~> 4.0"
 
-    s.add_dependency 'mail', '~> 2.5'
+    s.add_dependency 'mail', '~> 2.6'
     s.add_dependency 'carrierwave', '~> 0.10'
     s.add_dependency 'aws-s3', '~> 0.6'
     s.add_dependency 'redis-objects', '~> 0.9'

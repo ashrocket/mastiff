@@ -120,6 +120,10 @@ module Mastiff
         end
       end
 
+      def marshall_email(email)
+
+      end
+
       def save
         unless self.mail_message.blank?
           lock if @has_attachments and not @attachment_analyzed
