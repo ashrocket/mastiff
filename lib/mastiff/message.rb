@@ -1,9 +1,11 @@
 require 'redis-objects'
+require 'mail'
+
 
 module Mastiff
   module Email
     class Message
-      attr_accessor :attachment_name, :stored_filename, :attachment_size, :uid, :validity_id, :header, :mail_message, :mailbox, :busy, :uploader
+      attr_accessor :attachment_name, :stored_filename, :attachment_size, :uid, :validity_id, :header, :raw_message,  :mailbox, :busy, :uploader
       attr_accessor :has_attachments, :attachment_analyzed
 
       include Redis::Objects
@@ -52,7 +54,11 @@ module Mastiff
       end
 
       def raw_source
-        self.class.raw[id]
+        if @raw_message.blank?
+          self.class.raw[id]
+        else
+          @raw_message
+        end
       end
       def as_mail
         Mail.new raw_source
@@ -84,11 +90,12 @@ module Mastiff
         attrs.deep_symbolize_keys!
         @uid           = attrs[:uid]
         @validity_id   = attrs[:validity_id]
-        @mail_message  = attrs[:mail_message]
-
-        if @mail_message and @mail_message.has_attachments?
+        @raw_message   = attrs[:raw_message]
+        # @mail_message  = attrs[:mail_message]
+        mail_message = as_mail
+        if mail_message and mail_message.has_attachments?
           @has_attachments = true
-          attachment = @mail_message.attachments[0]
+          attachment = mail_message.attachments[0]
           @attachment_name  = attachment.filename
           @attachment_size  = 0
           @stored_filename = @attachment_name.squish.gsub(" ", "_")
@@ -102,33 +109,32 @@ module Mastiff
         if attrs[:header].is_a? Hash
           @header = attrs[:header]
         end
-        if  @mail_message and @header.blank?
+        if  mail_message and @header.blank?
           @header  = {
             id: id,
             busy: false,
-            from: @mail_message[:from].display_names.first,
-            sender_email: @mail_message.from.first,
-            subject: @mail_message.subject,
-            date: @mail_message.date,
+            from: mail_message[:from].display_names.first,
+            sender_email: mail_message.from.first,
+            subject: mail_message.subject,
+            date: mail_message.date,
             attachment_name: @attachment_name,
             attachment_size: @attachment_size,
             stored_filename: @stored_filename,
           }
-        elsif @mail_message and not @header.blank?
-          byebug
+        elsif mail_message and not @header.blank?
+          # TODO: Change this to a use a gem logger
           puts "Header already existed"
         end
       end
 
-      def marshall_email(email)
 
-      end
 
       def save
-        unless self.mail_message.blank?
+        mail_message = as_mail
+
+        unless mail_message.blank?
           lock if @has_attachments and not @attachment_analyzed
-          self.class.raw[id]    = self.mail_message
-          self.mail_message     = nil
+          self.class.raw[id]    = self.raw_message
         end
 
         self.class.emails[id] = self

@@ -242,9 +242,8 @@ module Mastiff
             unless new_ids.blank?
               fetchdata = imap.uid_fetch(new_ids, ['RFC822'])
               fetchdata.each do |rec|
-                  message = Mail.new(rec.attr['RFC822'])
                   validity_id = imap.responses["UIDVALIDITY"].last if imap.responses["UIDVALIDITY"]
-                  msg         = Message.new(uid: rec.attr['UID'], validity_id: validity_id, mail_message: message)
+                  msg         = Message.new(uid: rec.attr['UID'], validity_id: validity_id, raw_message: rec.attr['RFC822'])
                   msg.save
               end
             end
