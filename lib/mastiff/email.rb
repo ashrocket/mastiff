@@ -175,7 +175,10 @@ module Mastiff
              imap.create("INBOX#{delim}processed")
            end
            uids.each do |uid|
+             puts "Copying Mail to processed folder #{uid}"
              imap.uid_copy(uid, "INBOX#{delim}processed")
+             puts "Marking Mail for deletion #{uid}"
+
              imap.uid_store(uid, "+FLAGS", [:Deleted])
            end
            imap.expunge
@@ -260,7 +263,7 @@ module Mastiff
       self.flush
       Mail.all({keys:["NOT", "DELETED"]}.merge(options)) do |message, imap, uid|
         validity_id = imap.responses["UIDVALIDITY"].last if imap.responses["UIDVALIDITY"]
-        msg         = Message.new(uid: uid, validity_id: validity_id, mail_message: message)
+        msg         = Message.new(uid: uid, validity_id: validity_id, raw_message: message.raw_source)
         msg.save
 
         if Message.validity != msg.validity_id
