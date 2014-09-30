@@ -29,13 +29,12 @@ Gem::Specification.new do |s|
 
     s.add_dependency 'mail', '~> 2.6'
     s.add_dependency 'carrierwave', '~> 0.10'
-    s.add_dependency 'aws-s3', '~> 0.6'
     s.add_dependency 'redis-objects', '~> 0.9'
     s.add_dependency 'highline'
 
-  s.add_dependency 'sidekiq',  '~> 2.17.7'
-  s.add_dependency 'sidetiq',  '~> 0.5'
-  s.add_dependency 'sidekiq-lock',  '~> 0.2'
+    s.add_dependency 'sidekiq',  '~> 2.17.7'
+    s.add_dependency 'sidetiq',  '~> 0.5'
+    s.add_dependency 'sidekiq-lock',  '~> 0.2'
 
 
 
