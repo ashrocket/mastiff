@@ -123,7 +123,7 @@ module Mastiff
           }
         elsif mail_message and not @header.blank?
           # TODO: Change this to a use a gem logger
-          puts "Header already existed"
+          Sidekiq::Logging.logger.info "Header already existed"
         end
       end
 

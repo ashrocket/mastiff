@@ -11,7 +11,7 @@ class EmailsController < ApplicationController
   def list
     @emails = Mastiff::Email.headers
     @emails.each{|m| m["DT_RowId"] = m[:id]}
-    puts @emails.map{|m| "#{m[:id]}, #{m[:attachment_size]}"}
+    Rails.logger.info @emails.map{|m| "#{m[:id]}, #{m[:attachment_size]}"}
     render :json => {aaData: @emails}
     #    render :json => {aaData: @emails.map{|email| [
     #    email[:id],

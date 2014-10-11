@@ -117,7 +117,7 @@ module Mastiff
       unless ids.blank?
         ids.each do |id|
           msg = Message.get(id)
-          puts "msg #{id} busy state: #{msg.header[:busy]}"
+          Sidekiq::Logging.logger.info "msg #{id} busy state: #{msg.header[:busy]}"
           unless msg.busy?
             msg.lock_and_save
             begin
@@ -175,9 +175,9 @@ module Mastiff
              imap.create("INBOX#{delim}processed")
            end
            uids.each do |uid|
-             puts "Copying Mail to processed folder #{uid}"
+             Sidekiq::Logging.logger.info "Copying Mail to processed folder #{uid}"
              imap.uid_copy(uid, "INBOX#{delim}processed")
-             puts "Marking Mail for deletion #{uid}"
+             Sidekiq::Logging.logger.info "Marking Mail for deletion #{uid}"
 
              imap.uid_store(uid, "+FLAGS", [:Deleted])
            end
@@ -239,7 +239,7 @@ module Mastiff
           uids        = imap.uid_search(["NOT", "DELETED"]).sort
           local_uids  = Message.ids
           if  uids != local_uids
-            puts "*** Syncing Some ***"
+            Sidekiq::Logging.logger.info "*** Syncing Some ***"
             new_ids     = uids       - local_uids
             deleted_ids = local_uids - uids
             unless new_ids.blank?
