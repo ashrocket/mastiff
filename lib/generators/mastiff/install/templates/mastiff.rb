@@ -16,10 +16,6 @@ Mastiff.configure do |config|
   end
 
   # Mailbox Options
-  config.finalize_succes_mailbox = 'processed'
-  config.finalize_reject_mailbox = 'rejected'
-  config.processing_mailbox = 'processing'
-
 
   # Redis Objects Option configuration
   Mastiff::Email::Message.redis = Redis.new(config.redis_options)
@@ -44,6 +40,12 @@ Mastiff.configure do |config|
 
   config.attachment_dir      = "data/attachments/pending"
   #config.process_dir      = "data/attachments/processed"
+
+  # Mailbox Options
+  config.mailbox_folders = config.mailbox_folders.merge({processed: 'processed',
+                                                         rejected: 'rejected',
+                                                         processing: 'processing'})
+
 
   ul = config.attachment_uploader.new
   File.directory?(ul.store_dir) or

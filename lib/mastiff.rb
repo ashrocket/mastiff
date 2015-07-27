@@ -31,6 +31,10 @@ module Mastiff
   mattr_accessor :attachment_dir
   @@attachment_dir = '/tmp'
 
+  mattr_accessor :mailbox_folders
+  @@mailbox_folders = {}
+
+
   # Yield self on setup for nice config blocks
   def self.configure(&block)
     yield self

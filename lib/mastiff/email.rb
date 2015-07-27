@@ -172,9 +172,9 @@ module Mastiff
           mail_folder = ''
           case status
             when /processed/
-              mail_folder = Mastiff.finalize_succes_mailbox if Mastiff.finalize_succes_mailbox
+              mail_folder = Mastiff.mailbox_folders[:processed] if Mastiff.mailbox_folders[:processed]
             when /rejected/
-              mail_folder = Mastiff.finalize_reject_mailbox if Mastiff.finalize_reject_mailbox
+              mail_folder = Mastiff.mailbox_folders[:rejected] if Mastiff.mailbox_folders[:rejected]
           end
           if mail_folder
             path = ["INBOX", mail_folder].join(delim)
