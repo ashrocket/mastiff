@@ -15,6 +15,12 @@ Mastiff.configure do |config|
 
   end
 
+  # Mailbox Options
+  config.finalize_succes_mailbox = 'processed'
+  config.finalize_reject_mailbox = 'rejected'
+  config.processing_mailbox = 'processing'
+
+
   # Redis Objects Option configuration
   Mastiff::Email::Message.redis = Redis.new(config.redis_options)
 

@@ -161,7 +161,7 @@ module Mastiff
       end
       return []
     end
-    def finalize(ids = [])
+    def finalize(ids = [], status = 'ok')
       unless ids.blank?
         uids         = ids.map{|v| (v.split ':').last.to_i}
         original_vid = ids.first.split(':').first.to_i
@@ -169,20 +169,34 @@ module Mastiff
 
         Mail.connection do |imap|
           delim = imap.list("","INBOX").first.delim
-          path = ["INBOX","processed"].join(delim)
-          imap.select('INBOX')
-           if not imap.list('', "INBOX#{delim}processed")
-             imap.create("INBOX#{delim}processed")
-           end
-           uids.each do |uid|
-             Sidekiq::Logging.logger.info "Copying Mail to processed folder #{uid}"
-             imap.uid_copy(uid, "INBOX#{delim}processed")
-             Sidekiq::Logging.logger.info "Marking Mail for deletion #{uid}"
+          mail_folder = ''
+          case status
+            when /processed/
+              mail_folder = Mastiff.finalize_succes_mailbox if Mastiff.finalize_succes_mailbox
+            when /rejected/
+              mail_folder = Mastiff.finalize_reject_mailbox if Mastiff.finalize_reject_mailbox
+          end
+          if mail_folder
+            path = ["INBOX", mail_folder].join(delim)
+            imap.select('INBOX')
+            if not imap.list('', "INBOX#{delim}#{mail_folder}")
+             imap.create("INBOX#{delim}#{mail_folder}")
+            end
 
-             imap.uid_store(uid, "+FLAGS", [:Deleted])
-           end
-           imap.expunge
+            uids.each do |uid|
+              Sidekiq::Logging.logger.info "Copying Mail to folder #{mail_folder} #{uid}"
+              imap.uid_copy(uid, "INBOX#{delim}#{mail_folder}")
+            end
+          end
+
+          uids.each do |uid|
+            Sidekiq::Logging.logger.info "Marking Mail for deletion #{uid}"
+            imap.uid_store(uid, "+FLAGS", [:Deleted])
+          end
+
+          imap.expunge
         end
+
         sync_deleted(ids)
         return ids
       end
