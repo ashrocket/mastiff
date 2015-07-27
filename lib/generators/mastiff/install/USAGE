@@ -4,6 +4,13 @@ Description:
 Example:
     rails generate mastiff:install
 
-    This will create:
-        config/initializers/mastiff.rb
-
+    This will run:
+      create  config/initializers/mastiff.rb
+      create  config/sidekiq.yml
+      create  app/workers
+      create  app/workers/sync_mail_worker.rb
+      create  app/workers/sync_attachment_worker.rb
+      create  app/workers/process_attachment_worker.rb
+      create  app/uploaders
+      create  app/uploaders/mail_attachment_uploader.rb
+      create  data/attachments/pending

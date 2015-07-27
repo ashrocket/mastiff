@@ -1,0 +1,30 @@
+Description:
+    This generator installs Mastiff views into your app
+
+Example:
+    rails generate mastiff:views
+
+    This will run:
+    route  resource :mail, :controller => 'emails', only: [:index] do
+           get '/', action: :index
+           get 'msg_ids',  format: 'json'
+           get 'validity',  format: 'json'
+           get 'list', format: 'json'
+
+           # These should be POSTs with no data, but get is easier to use
+           get 'reload', format: 'json'
+           get 'reset', format: 'json'
+           get 'process_inbox', format: 'json'
+
+           # These are posts with data
+           post 'remove', format: 'json'
+           post 'archive', format: 'json'
+           post 'handle_mail', format: 'json'
+      end
+      insert  app/assets/stylesheets/application.css.scss
+      insert  app/assets/javascripts/application.js
+      create  app/assets/javascripts/emails.js.coffee
+      create  app/assets/stylesheets/emails.css.scss
+      create  app/controllers/emails_controller.rb
+      create  app/views/emails
+      create  app/views/emails/index.html.erb
