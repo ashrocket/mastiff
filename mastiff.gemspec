@@ -27,13 +27,13 @@ Gem::Specification.new do |s|
 
     s.add_dependency "rails", "~> 4.0"
 
-    s.add_dependency 'mail', '~> 2.6'
-    s.add_dependency 'carrierwave', '~> 0.10'
-    s.add_dependency 'redis-objects', '~> 0.9'
-    s.add_dependency 'highline'
+    s.add_runtime_dependency  'highline', '~> 1.7'
+    s.add_runtime_dependency 'mail', '~> 2.6'
+    s.add_runtime_dependency 'carrierwave', '~> 0.10'
+    s.add_runtime_dependency 'redis-objects', '~> 0.9'
 
-    s.add_dependency 'sidekiq',  '~> 2.17.7'
-    s.add_dependency 'sidetiq',  '~> 0.5'
+    s.add_runtime_dependency 'sidekiq',  '~> 2.17'
+    s.add_runtime_dependency 'sidetiq',  '~> 0.5'
     s.add_dependency 'sidekiq-lock',  '~> 0.2'
 
 
