@@ -4,7 +4,7 @@ require 'spec_helper'
 describe "mastiff" do
 
   it "should be able to be instantiated" do
-    doing { Mastiff }.should_not raise_error
+    expect(doing { Mastiff }).not_to raise_error
   end
 
   #it "should be able to make a new email" do

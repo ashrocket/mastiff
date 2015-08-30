@@ -54,6 +54,7 @@ module Mastiff
       end
 
       def raw_source
+        byebug if @raw_message.include? 'Box'
         if @raw_message.blank?
           self.class.raw[id]
         else
