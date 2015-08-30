@@ -38,19 +38,28 @@ Mastiff.configure do |config|
   # Class to store attachment
   config.attachment_uploader        =  MailAttachmentUploader
 
-  config.attachment_dir      = "data/attachments/pending"
-  #config.process_dir      = "data/attachments/processed"
+  # Uncomment if you want attachments to be unpacked locally, default is '/tmp/mastiff'
+  # config.attachment_dir      = "data/attachments/pending"
 
-  # Mailbox Options
+
+   # Mailbox Options
   config.mailbox_folders = config.mailbox_folders.merge({processed: 'processed',
                                                          rejected: 'rejected',
                                                          processing: 'processing'})
-
-
   ul = config.attachment_uploader.new
+  if ul.store_dir.eql? '/tmp'
+    tmp_path =  File.dirname(Tempfile.new('foo'))
+    if FileUtils.mkpath(File.join(tmp_path ,'mastiff'))
+      Mastiff.attachment_dir  = File.join(tmp_path ,'mastiff')
+    else
+      Mastiff.attachment_dir = ''
+    end
+    ul = config.attachment_uploader.new
+  end
   File.directory?(ul.store_dir) or
-  abort "Gem requires local storage path for mail attachments - #{ul.store_dir} does not exist!\n" +
-      "to generate path, execute\n" +
-      "rake mastiff:init_paths['#{ul.store_dir}']"
+      abort "Gem requires local storage path for mail attachments - #{ul.store_dir} does not exist!\n" +
+          "to generate path, execute\n" +
+          "rake mastiff:init_paths['#{ul.store_dir}']"
+
 end
 

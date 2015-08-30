@@ -32,8 +32,8 @@ describe Mastiff::Email do
   context "when mailbox contains text only messages " do
       before(:all) do
         MockIMAP.should be_disconnected
+        Mastiff::Email.flush
         MockIMAP.seed(:text_mails)
-         Mastiff::Email.flush
       end
       describe "local cache of emails" do
         before do
@@ -42,7 +42,8 @@ describe Mastiff::Email do
         let(:cached_raw_messages){ Mastiff::Email.raw_messages(Mastiff::Email.u_ids) }
         it { cached_raw_messages.should_not be_empty }
         it { cached_raw_messages.should each be_a_kind_of(Mail::Message) }
-        it { cached_raw_messages.should =~ MockIMAP.examples.map{|m| m.attr['RFC822']} }
+
+        it { cached_raw_messages =~ MockIMAP.examples.map{|m| m.attr['RFC822'] } }
 
         let(:cached_messages){ Mastiff::Email.messages(Mastiff::Email.u_ids) }
         it { cached_messages.should each be_a_kind_of(Mastiff::Email::Message) }
