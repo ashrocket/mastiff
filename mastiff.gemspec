@@ -17,11 +17,11 @@ Gem::Specification.new do |s|
     s.summary     = "Mastiff gem is a rails engine for processing and emailed artifacts that are regularly updated."
 
 
-    s.files         = `git ls-files -z`.split("\x0").reject { |f| f.start_with?('spec/') }
+    #s.files         = `git ls-files -z`.split("\x0").reject { |f| f.start_with?('spec/') }
     #s.files         = `git ls-files`.split("\n")
-    #s.files = Dir.glob("{bin,lib}/**/*") + %w(README.md)
+    s.files = Dir.glob("{bin,lib}/**/*") + %w(README.md)
 
-    s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+    #s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
     s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
 
     s.require_paths = ["lib"]
