@@ -63,7 +63,7 @@ describe Mastiff::Email do
         let(:cached_raw_messages){ Mastiff::Email.raw_messages(Mastiff::Email.u_ids) }
         # it { expect(cached_raw_messages).not_to be_empty }
         # it { expect(cached_raw_messages).to each be_a_kind_of(Mail::Message) }
-        it { expect(cached_raw_messages.map{|m| m.to_h}).to match_array(MockIMAP.examples.map{|m| m.attr['RFC822'].to_h}) }
+        it { expect(cached_raw_messages).to match_array(MockIMAP.examples.map{|m| m.attr['RFC822']}) }
 
 
         let(:cached_messages){ Mastiff::Email.messages(Mastiff::Email.u_ids) }

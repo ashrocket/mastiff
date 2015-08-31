@@ -76,5 +76,8 @@ Rspec Tests
 
 You must run `$rails g mastiff:install` before executing tests, from within the spec/dummy directory.
 
-
+TODO
+-------------
+There is a glitch in saving strings with respect to cc fields.
+Currently encoding will add extra escape characters to esacaped string, and Group Names in cc fields like 'undisclosed' recipients will get lost from the mail when it is saved.  Likely a change in the way Mail gem works.
 
