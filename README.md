@@ -15,9 +15,9 @@ Compatibility
 -------------
 Mastiff currently supports use of redis version 2.8.9 - 2.8.16
 Mastiff currently supports use of the following sidekiq gem and plug-ins
- * gem "sidekiq", '~> 2.17.7'
- * gem 'sidetiq', '~> 0.5.0'
- * gem 'sidekiq-lock', '0.2.0'
+ * gem 'sidekiq', '~> 3.5.0'
+ * gem 'sidetiq', '~> 0.6.3'
+ * gem 'sidekiq-lock', '~> 0.2.0'
 
 Installation
 ------------
