@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
     s.add_runtime_dependency 'carrierwave', '~> 0.10'
     s.add_runtime_dependency 'redis-objects', '~> 0.9'
 
-    s.add_runtime_dependency 'sidekiq',  '~> 3.5.0'
+    s.add_runtime_dependency 'sidekiq',  '~> 3.0.0'
     s.add_runtime_dependency 'sidetiq',  '~> 0.6.3'
     s.add_dependency 'sidekiq-lock',  '~> 0.2'
 
